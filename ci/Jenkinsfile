@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+  stages {
+    stage('Lint') {
+      steps { sh 'ruff services/' }
+    }
+    stage('Test') {
+      steps { sh 'pytest' }
+    }
+    stage('Docker Build') {
+      steps {
+        sh 'docker build -f docker/api.Dockerfile -t nionpulse-api .'
+        sh 'docker build -f docker/worker.Dockerfile -t nionpulse-worker .'
+      }
+    }
+  }
+}
