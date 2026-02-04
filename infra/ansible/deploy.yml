@@ -1,0 +1,8 @@
+- hosts: web
+  become: yes
+  tasks:
+    - name: Pull image
+      shell: docker pull nionpulse-api
+
+    - name: Restart service
+      shell: docker restart nionpulse-api
