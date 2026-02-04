@@ -1,0 +1,6 @@
+from analytics import compute_metrics
+
+def test_compute_metrics():
+    e = {"type":"test","payload":{"a":1}}
+    r = compute_metrics(e)
+    assert r > 0
