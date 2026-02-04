@@ -1,0 +1,11 @@
+service: nionpulse
+
+provider:
+  name: aws
+  runtime: python3.11
+
+functions:
+  api:
+    handler: services/api/main.app
+    events:
+      - httpApi: "*"
