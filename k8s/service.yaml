@@ -1,17 +1,11 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: nionpulse-worker
+  name: api-service
 spec:
-  replicas: 3
+  type: LoadBalancer
   selector:
-    matchLabels:
-      app: worker
-  template:
-    metadata:
-      labels:
-        app: worker
-    spec:
-      containers:
-        - name: worker
-          image: nionpulse-worker:latest
+    app: api
+  ports:
+    - port: 80
+      targetPort: 8000
